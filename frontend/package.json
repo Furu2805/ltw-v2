@@ -22,13 +22,21 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "eslint-plugin-jest": "^25.7.0"
-  },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
+    ],
+    "overrides": [
+      {
+        "files": ["**/*.test.js", "**/*.spec.js"],
+        "globals": {
+          "describe": "readonly",
+          "expect": "readonly",
+          "it": "readonly",
+          "jest": "readonly",
+          "test": "readonly"
+        }
+      }
     ]
   },
   "browserslist": {

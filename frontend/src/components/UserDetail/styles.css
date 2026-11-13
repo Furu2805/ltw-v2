@@ -1,0 +1,32 @@
+/* UserDetail card – clean white like Facebook profile modules */
+.MuiCard-root {
+	border-radius: 12px;
+	background: #fff;
+	box-shadow: 0 8px 24px rgba(16,24,40,0.08);
+	border: 1px solid rgba(15,23,42,0.06);
+}
+
+.MuiCardContent-root { padding: 18px; }
+
+.user-description { line-height: 1.7; color: var(--text); }
+
+.user-actions { margin-top: 18px; }
+
+/* Indent info list from the left edge as marked */
+ul { list-style: none; padding-left: 24px !important; margin-left: 0; }
+
+/* Polished details block */
+h2 { margin-top: 10px; margin-bottom: 12px; font-weight: 800; letter-spacing: 0.2px; color: #111827; }
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 20px 22px;
+	background: #fff;
+	border: 1px solid rgba(15,23,42,0.08);
+	border-radius: 12px;
+	box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+}
+
+ul li { padding: 8px 0; color: var(--text); }
+ul li strong { color: var(--text-muted); }

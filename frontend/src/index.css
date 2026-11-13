@@ -1,0 +1,53 @@
+:root {
+  --brand: #1877F2;
+  --brand-2: #1b74e4;
+  --bg: #f0f2f5;
+  --text: #111827;
+  --text-muted: #6b7280;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Prevent outer (window) scrollbar */
+html, body, #root { height: 100%; overflow-x: hidden; overflow-y: hidden; }
+
+/* Align right content and fix bottom frame mismatch */
+.main-grid-item {
+  padding: 24px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.main-grid-item > * {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* Subtle custom scrollbar in content area */
+.main-grid-item::-webkit-scrollbar { width: 10px; }
+.main-grid-item::-webkit-scrollbar-track { background: transparent; }
+.main-grid-item::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.18);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}

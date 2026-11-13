@@ -1,0 +1,26 @@
+/* Enhanced left menu – Facebook-like */
+.MuiList-root { background: transparent; padding-top: 8px; }
+
+nav li { list-style: none; }
+nav li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 160ms ease, transform 160ms ease;
+}
+nav li a:hover { background: rgba(0,0,0,0.06); transform: translateX(2px); }
+nav li a:active { transform: translateX(1px); }
+
+nav li a svg { width: 22px; height: 22px; color: var(--brand); opacity: 0.9; }
+
+.MuiListItemText-primary { font-weight: 700; letter-spacing: 0.2px; }
+.MuiDivider-root { border-color: rgba(15,23,42,0.06); }
+
+.MuiTypography-body1 { color: var(--text-muted); }
+
+/* Section heading style */
+nav h3, nav .MuiTypography-subtitle1 { color: var(--text-muted); font-weight: 700; margin: 12px 8px 8px; }

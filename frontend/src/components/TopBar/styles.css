@@ -1,0 +1,30 @@
+.topbar-appBar {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  background: var(--brand);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 6px 16px rgba(24, 119, 242, 0.25);
+}
+
+.topbar-appBar .MuiToolbar-root {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  justify-content: space-between;
+}
+.topbar-appBar .MuiTypography-root { color: #fff; font-weight: 800; letter-spacing: 0.2px; }
+
+.topbar-title {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #fff;
+}
+
+.topbar-context {
+  opacity: 0.95;
+  color: rgba(255,255,255,0.9);
+  margin-left: auto;
+  text-align: right;
+  white-space: nowrap;
+}

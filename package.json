@@ -6,13 +6,10 @@
     "frontend"
   ],
   "scripts": {
-    "start": "concurrently --kill-others -n API,WEB \"npm --prefix backend start\" \"npm --prefix frontend start\""
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.1"
+    "start": "node scripts/start.js"
   },
   "stackblitz": {
     "installDependencies": true,
-    "startCommand": "npm start"
+    "startCommand": "pnpm start"
   }
 }

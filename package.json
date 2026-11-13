@@ -1,0 +1,18 @@
+{
+  "name": "photo-sharing-labs",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "start": "concurrently --kill-others -n API,WEB \"npm --prefix backend start\" \"npm --prefix frontend start\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "stackblitz": {
+    "installDependencies": true,
+    "startCommand": "npm start"
+  }
+}

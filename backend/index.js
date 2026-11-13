@@ -1,36 +1,71 @@
 const express = require("express");
 const cors = require("cors");
-const dbConnect = require("./db/dbConnect");
-const UserRouter = require("./routes/UserRouter");
-const PhotoRouter = require("./routes/PhotoRouter");
-const SchemaInfo = require("./db/schemaInfo");
+const models = require("./modelData/models");
 
 const app = express();
+const port = 8081;
 
-dbConnect();
+app.use(cors());
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
-);
-app.use(express.json());
-
-app.get("/test/info", async (request, response) => {
-  try {
-    const schemaInfo = await SchemaInfo.findOne({}, "_id __v load_date_time");
-    if (!schemaInfo) {
-      return response.status(404).json({ message: "Schema info not found" });
-    }
-    return response.json(schemaInfo);
-  } catch (error) {
-    return response.status(500).json({ message: "Failed to fetch schema info" });
-  }
+app.get("/test/info", (request, response) => {
+  response.json(models.schemaInfo());
 });
 
-app.use("/user", UserRouter);
-app.use("/photosOfUser", PhotoRouter);
+app.get("/user/list", (request, response) => {
+  const users = models.userListModel().map(({ _id, first_name, last_name }) => ({
+    _id,
+    first_name,
+    last_name,
+  }));
 
-app.listen(8081, () => {
-  console.log("server listening on port 8081");
+  response.json(users);
+});
+
+app.get("/user/:id", (request, response) => {
+  const user = models.userModel(request.params.id);
+  if (!user) {
+    return response.status(400).json({ message: "Invalid user ID" });
+  }
+
+  const { _id, first_name, last_name, location, description, occupation } = user;
+  return response.json({
+    _id,
+    first_name,
+    last_name,
+    location,
+    description,
+    occupation,
+  });
+});
+
+app.get("/photosOfUser/:id", (request, response) => {
+  const user = models.userModel(request.params.id);
+  if (!user) {
+    return response.status(400).json({ message: "Invalid user ID" });
+  }
+
+  const photos = models.photoOfUserModel(request.params.id).map((photo) => ({
+    _id: photo._id,
+    user_id: photo.user_id,
+    file_name: photo.file_name,
+    date_time: photo.date_time,
+    comments: (photo.comments || []).map((comment) => ({
+      _id: comment._id,
+      comment: comment.comment,
+      date_time: comment.date_time,
+      user: comment.user
+        ? {
+            _id: comment.user._id,
+            first_name: comment.user.first_name,
+            last_name: comment.user.last_name,
+          }
+        : null,
+    })),
+  }));
+
+  return response.json(photos);
+});
+
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Photo sharing API listening on port ${port} (local seed data)`);
 });

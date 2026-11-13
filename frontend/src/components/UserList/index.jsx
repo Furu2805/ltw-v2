@@ -16,7 +16,7 @@ import fetchModel from "../../lib/fetchModelData";
 function UserList() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetchModel("http://localhost:8081/user/list").then((data) => {
+    fetchModel("/user/list").then((data) => {
       setUsers(Array.isArray(data) ? data : []);
     });
   }, []);

@@ -18,7 +18,7 @@ function TopBar() {
 
     const [, view, userId] = match;
     setContext(view === "photos" ? "Photos" : "User details");
-    fetchModel(`http://localhost:8081/user/${userId}`).then((user) => {
+    fetchModel(`/user/${userId}`).then((user) => {
       if (user) {
         const name = `${user.first_name} ${user.last_name}`;
         setContext(view === "photos" ? `Photos of ${name}` : name);

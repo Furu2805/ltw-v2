@@ -9,7 +9,7 @@ function UserPhotos() {
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
-    fetchModel(`http://localhost:8081/photosOfUser/${userId}`).then((data) => {
+    fetchModel(`/photosOfUser/${userId}`).then((data) => {
       setPhotos(Array.isArray(data) ? data : []);
     });
   }, [userId]);
